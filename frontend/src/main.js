@@ -8,7 +8,7 @@ import '@/styles/styles.scss'
 import '@core/scss/index.scss'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
-import store from './views/client/stores/dashboard'; 
+import store from './stores'; 
 loadFonts()
 const app = createApp(App)
 app.use(vuetify)
