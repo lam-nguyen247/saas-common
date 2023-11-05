@@ -19,13 +19,12 @@ RUN useradd -m -u ${UID} docker \
 # Install Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - 
 RUN apt-get install -y nodejs
+RUN npm install --global yarn
+
 
 # Copy php-fpm
 COPY docker/app/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-# Cài đặt các extension PHP mà bạn cần
-RUN docker-php-ext-install pdo pdo_mysql
 
 # Đặt thư mục làm việc trong container
 WORKDIR /var/www/html

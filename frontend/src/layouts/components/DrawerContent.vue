@@ -22,8 +22,9 @@ const upgradeBanner = computed(() => {
       class="app-logo d-flex align-center gap-x-3 app-title-wrapper"
     >
       <!-- ℹ️ You can also use img tag or VImg here -->
+      <!-- eslint-disable vue/no-v-html -->
       <div v-html="logo" />
-
+      <!-- eslint-enable -->
       <Transition name="vertical-nav-app-title">
         <h1 class="font-weight-semibold leading-normal text-xl text-uppercase">
           Materio
@@ -41,13 +42,13 @@ const upgradeBanner = computed(() => {
         icon: { icon: 'mdi-home-outline' }
       }"
     />
-    <VerticalNavLink
+    <!-- <VerticalNavLink
       :item="{
         title: 'Account Settings',
-        to: 'account-settings',
+        to: 'admin/account-settings',
         icon: { icon: 'mdi-account-cog-outline' }
       }"
-    />
+    /> -->
     <!-- 👉 Pages -->
     <VerticalNavSectionTitle :item="{ heading: 'Pages' }" />
     <VerticalNavLink
@@ -118,19 +119,7 @@ const upgradeBanner = computed(() => {
   </ul>
 
   <!-- 👉 illustration -->
-  <a
-    href="https://themeselection.com/item/materio-vuetify-vuejs-admin-template"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      :src="upgradeBanner"
-      alt="upgrade-banner"
-      transition="scale-transition"
-      class="upgrade-banner mx-auto"
-      style="max-width: 230px"
-    >
-  </a>
+
 </template>
 
 <style lang="scss">

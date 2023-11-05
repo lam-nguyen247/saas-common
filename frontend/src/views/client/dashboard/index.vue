@@ -1,13 +1,13 @@
 <script setup>
-import AnalyticsAward from '@/views/dashboards/analytics/AnalyticsAward.vue'
-import AnalyticsBarCharts from '@/views/dashboards/analytics/AnalyticsBarCharts.vue'
-import AnalyticsDatatable from '@/views/dashboards/analytics/AnalyticsDatatable.vue'
-import AnalyticsDepositWithdraw from '@/views/dashboards/analytics/AnalyticsDepositWithdraw.vue'
-import AnalyticsSalesByCountries from '@/views/dashboards/analytics/AnalyticsSalesByCountries.vue'
-import AnalyticsTotalEarning from '@/views/dashboards/analytics/AnalyticsTotalEarning.vue'
-import AnalyticsTotalProfitLineCharts from '@/views/dashboards/analytics/AnalyticsTotalProfitLineCharts.vue'
-import AnalyticsTransactions from '@/views/dashboards/analytics/AnalyticsTransactions.vue'
-import AnalyticsWeeklyOverview from '@/views/dashboards/analytics/AnalyticsWeeklyOverview.vue'
+import AnalyticsAward from '@/views/client/dashboard/components/analytics/AnalyticsAward.vue'
+import AnalyticsBarCharts from '@/views/client/dashboard/components/analytics/AnalyticsBarCharts.vue'
+import AnalyticsDatatable from '@/views/client/dashboard/components/analytics/AnalyticsDatatable.vue'
+import AnalyticsDepositWithdraw from '@/views/client/dashboard/components/analytics/AnalyticsDepositWithdraw.vue'
+import AnalyticsSalesByCountries from '@/views/client/dashboard/components/analytics/AnalyticsSalesByCountries.vue'
+import AnalyticsTotalEarning from '@/views/client/dashboard/components/analytics/AnalyticsTotalEarning.vue'
+// import AnalyticsTotalProfitLineCharts from '@/views/client/dashboard/components/analytics/AnalyticsTotalProfitLineCharts.vue'
+import AnalyticsTransactions from '@/views/client/dashboard/components/analytics/AnalyticsTransactions.vue'
+import AnalyticsWeeklyOverview from '@/views/client/dashboard/components/analytics/AnalyticsWeeklyOverview.vue'
 import CardStatisticsVertical from '@core/components/CardStatisticsVertical.vue'
 
 const totalProfit = {

@@ -986,7 +986,7 @@
     "@vue/compiler-dom" "3.3.5"
     "@vue/shared" "3.3.5"
 
-"@vue/devtools-api@^6.5.0":
+"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.5.0":
   version "6.5.1"
   resolved "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.5.1.tgz"
   integrity sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==
@@ -1987,10 +1987,15 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-linux-64@0.15.18:
+esbuild-darwin-arm64@0.15.18:
   version "0.15.18"
-  resolved "https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.15.18.tgz"
-  integrity sha512-hNSeP97IviD7oxLKFuii5sDPJ+QHeiFTFLoLm7NZQligur8poNOWGIgpQ7Qf8Balb69hptMZzyOBIPtY09GZYw==
+  resolved "https://registry.npmjs.org/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.15.18.tgz"
+  integrity sha512-tKPSxcTJ5OmNb1btVikATJ8NftlyNlc8BVNtyT/UAr62JFOhwHlnoPrhYWz09akBLHI9nElFVfWSTSRsrZiDUA==
+
+esbuild-linux-arm64@0.15.18:
+  version "0.15.18"
+  resolved "https://registry.npmjs.org/esbuild-linux-arm64/-/esbuild-linux-arm64-0.15.18.tgz"
+  integrity sha512-54qr8kg/6ilcxd+0V3h9rjT4qmjc0CccMVWrjOEM/pEcUzt8X62HfBSeZfT2ECpM7104mk4yfQXkosY8Quptug==
 
 esbuild@^0.15.9, esbuild@>=0.13:
   version "0.15.18"
@@ -2569,6 +2574,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.1, function-bind@^1.1.2:
   version "1.1.2"
@@ -5193,7 +5203,7 @@ vue-tsc@^0.39.5:
     "@volar/vue-language-core" "0.39.5"
     "@volar/vue-typescript" "0.39.5"
 
-"vue@^2.6.0 || ^3.2.0", "vue@^2.6.12 || ^3.2.4", "vue@^2.6.14 || ^3.3.0", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.11, vue@^3.2.0, vue@^3.2.25, vue@^3.2.37, "vue@> 3.0.0", "vue@2 || 3", vue@3.3.5, vue@3.x:
+"vue@^2.6.0 || ^3.2.0", "vue@^2.6.12 || ^3.2.4", "vue@^2.6.14 || ^3.3.0", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.11, vue@^3.0.2, vue@^3.2.0, vue@^3.2.25, vue@^3.2.37, "vue@> 3.0.0", "vue@2 || 3", vue@3.3.5, vue@3.x:
   version "3.3.5"
   resolved "https://registry.npmjs.org/vue/-/vue-3.3.5.tgz"
   integrity sha512-xYpLEGb25yYU1ul9ZhCcavNZ4YW6PS7YTDdDAd0yc/3w69Tra2BwY4EpKguKddfD56QApXQ17XHq+fJJwEP+UQ==
@@ -5222,6 +5232,13 @@ vuetify@^3.0.0-beta.4, vuetify@3.0.0-beta.11:
   version "3.0.0-beta.11"
   resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.0.0-beta.11.tgz"
   integrity sha512-WHwHNRpnDZ2ZUaOlL3oSnIvVSz0kVLmF/OVQUupIYvgV8pERgFN2NtXN5E3bq/DQkMyYcEUcnSQIrzQs2aZ36A==
+
+vuex@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/vuex/-/vuex-4.0.2.tgz"
+  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 webfontloader@^1.6.28:
   version "1.6.28"
