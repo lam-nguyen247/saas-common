@@ -1,7 +1,7 @@
 <script setup>
 import { useDisplay } from 'vuetify'
 
-const {lgAndUp, mdAndDown} = useDisplay()
+const { lgAndUp, mdAndDown } = useDisplay()
 const drawer = ref(lgAndUp.value)
 </script>
 

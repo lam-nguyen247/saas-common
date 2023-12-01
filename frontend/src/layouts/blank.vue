@@ -4,10 +4,15 @@ import { VMain } from 'vuetify/lib/components/VMain/VMain'
 export default defineComponent({
   setup() {
     const routerView = resolveComponent('router-view')
-    
-    return () => h(VMain, { class: 'layout-wrapper layout-blank' }, {
-      default: () => h(routerView),
-    })
+
+    return () =>
+      h(
+        VMain,
+        { class: 'layout-wrapper layout-blank' },
+        {
+          default: () => h(routerView),
+        },
+      )
   },
 })
 </script>

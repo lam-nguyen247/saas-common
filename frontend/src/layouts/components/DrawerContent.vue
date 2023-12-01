@@ -2,16 +2,94 @@
 import upgradeBannerDark from '@/assets/images/pro/upgrade-banner-dark.png'
 import upgradeBannerLight from '@/assets/images/pro/upgrade-banner-light.png'
 import logo from '@/assets/logo.svg?raw'
-import {
-  VerticalNavLink,
-  VerticalNavSectionTitle,
-} from '@layouts'
+import { VerticalNavLink, VerticalNavSectionTitle } from '@layouts'
 import { useTheme } from 'vuetify'
-
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
+const router = useRouter()
+const route = useRoute()
 const vuetifyTheme = useTheme()
 const upgradeBanner = computed(() => {
   return vuetifyTheme.global.name.value === 'light' ? upgradeBannerLight : upgradeBannerDark
 })
+
+const isSuperAdmin = computed(() => store.getters.isSuperAdmin)
+const isAdmin = computed(() => store.getters.isAdmin)
+const isUser = computed(() => store.getters.isUser)
+
+const sidebarBasic = [
+  {
+    title: 'Dashboard',
+    path: 'dashboard',
+    icon: 'mdi-home-outline',
+  },
+  {
+    title: 'Account Settings',
+    path: 'account-settings',
+    icon: 'mdi-account-cog-outline',
+  },
+]
+
+const sidebarUser = [
+  {
+    title: 'Dashboard',
+    path: 'dashboard',
+    icon: 'mdi-home-outline',
+  },
+  {
+    title: 'Account Settings',
+    path: 'account-settings',
+    icon: 'mdi-account-cog-outline',
+  },
+]
+
+const sidebarAdmin = [
+  {
+    title: 'Dashboard',
+    path: 'dashboard',
+    icon: 'mdi-home-outline',
+  },
+  {
+    title: 'Account Settings',
+    path: 'account-settings',
+    icon: 'mdi-account-cog-outline',
+  },
+  {
+    title: 'Users List',
+    path: 'users',
+    icon: 'mdi-account-cog-outline',
+  },
+]
+
+const sidebarSuperAdmin = [
+  ...sidebarAdmin,
+  {
+    title: 'Role List',
+    path: 'roles',
+    icon: 'mdi-account-cog-outline',
+  },
+]
+
+const sidebarMenu = computed(() => {
+  if (isSuperAdmin.value) return sidebarSuperAdmin
+  if (isAdmin.value) return sidebarAdmin
+  if (isUser.value) return sidebarSuperAdmin
+
+  return sidebarBasic
+})
+
+const onGoToRoute = pathName => {
+  const rootUrl = route.path.split('/')[1]
+  if (route.path.split('/').length === 1) {
+    router.push(`/${pathName}`)
+
+    return
+  }
+  if (rootUrl) {
+    router.push(`/${rootUrl}/${pathName}`)
+  }
+}
 </script>
 
 <template>
@@ -26,9 +104,7 @@ const upgradeBanner = computed(() => {
       <div v-html="logo" />
       <!-- eslint-enable -->
       <Transition name="vertical-nav-app-title">
-        <h1 class="font-weight-semibold leading-normal text-xl text-uppercase">
-          Materio
-        </h1>
+        <h1 class="font-weight-semibold leading-normal text-xl text-uppercase">Napa Global</h1>
       </Transition>
     </RouterLink>
   </div>
@@ -36,90 +112,18 @@ const upgradeBanner = computed(() => {
   <!-- 👉 Nav items -->
   <ul>
     <VerticalNavLink
+      v-for="(item, index) in sidebarMenu"
+      :key="index"
       :item="{
-        title: 'Dashboard',
-        to: 'index',
-        icon: { icon: 'mdi-home-outline' }
+        title: item.title,
+        icon: { icon: item.icon },
+        active: route.path.split('/').pop() === item.path,
       }"
-    />
-    <!-- <VerticalNavLink
-      :item="{
-        title: 'Account Settings',
-        to: 'admin/account-settings',
-        icon: { icon: 'mdi-account-cog-outline' }
-      }"
-    /> -->
-    <!-- 👉 Pages -->
-    <VerticalNavSectionTitle :item="{ heading: 'Pages' }" />
-    <VerticalNavLink
-      :item="{
-        title: 'Login',
-        to: 'login',
-        target: '_blank',
-        icon: { icon: 'mdi-login' }
-      }"
-    />
-    <VerticalNavLink
-      :item="{
-        title: 'Register',
-        to: 'register',
-        target: '_blank',
-        icon: { icon: 'mdi-account-plus-outline' }
-      }"
-    />
-
-    <!-- ℹ️ This path doesn't exist so 404 route will catch this undefined path -->
-    <VerticalNavLink
-      :item="{
-        title: 'Error',
-        to: { path: '/error' },
-        target: '_blank',
-        icon: { icon: 'mdi-alert-circle-outline' }
-      }"
-    />
-
-    <!-- 👉 User Interface -->
-    <VerticalNavSectionTitle :item="{ heading: 'User Interface' }" />
-
-    <VerticalNavLink
-      :item="{
-        title: 'Typography',
-        to: 'typography',
-        icon: { icon: 'mdi-alpha-t-box-outline' }
-      }"
-    />
-    <VerticalNavLink
-      :item="{
-        title: 'Icons',
-        to: 'icons',
-        icon: { icon: 'mdi-eye-outline' }
-      }"
-    />
-    <VerticalNavLink
-      :item="{
-        title: 'Cards',
-        to: 'card-basic',
-        icon: { icon: 'mdi-credit-card-outline' }
-      }"
-    />
-    <VerticalNavLink
-      :item="{
-        title: 'Tables',
-        to: 'tables',
-        icon: { icon: 'mdi-table' }
-      }"
-    />
-    <VerticalNavLink
-      :item="{
-        title: 'Form Layouts',
-        to: 'form-layouts',
-        icon: { icon: 'mdi-form-select' }
-      }"
+      @click="onGoToRoute(item.path)"
     />
   </ul>
 
   <!-- 👉 illustration -->
-
 </template>
 
 <style lang="scss">

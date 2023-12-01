@@ -1,12 +1,17 @@
 import { createStore, createLogger } from 'vuex'
-import client from '../views/client/stores'
-
+import auth from './auth'
+import app from './app'
+import authSuperAdmin from './super-admin/auth'
+import authAdmin from './admin/auth'
 const debug = process.env.NODE_ENV !== 'production'
 
 export default createStore({
   modules: {
-    client
+    auth,
+    authSuperAdmin,
+    authAdmin,
+    app,
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger()] : [],
 })

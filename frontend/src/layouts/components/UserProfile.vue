@@ -1,6 +1,9 @@
 <script setup>
 import avatar1 from '@/assets/images/avatars/avatar-1.png'
-
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
+const router = useRouter()
 const avatarBadgeProps = {
   dot: true,
   location: 'bottom right',
@@ -9,12 +12,31 @@ const avatarBadgeProps = {
   color: 'success',
   bordered: true,
 }
+const isSuperAdmin = computed(() => store.getters.isSuperAdmin)
+const isAdmin = computed(() => store.getters.isAdmin)
+const isUser = computed(() => store.getters.isUser)
+console.log(isSuperAdmin.value)
+const user = computed(() => {
+  if (isSuperAdmin.value) {
+    return store.getters.getUserSuperAdminData
+  }
+  if (isAdmin.value) {
+    return store.getters.getUserAdminData
+  }
+  if (isUser.value) {
+    return store.getters.getUserData
+  }
+})
+console.log('User', user.value)
+const onLogout = () => {
+  router.push({ name: isSuperAdmin.value ? 'SuperAdminLogin' : 'Login' })
+}
 </script>
 
 <template>
   <VBadge v-bind="avatarBadgeProps">
     <VAvatar
-      style="cursor: pointer;"
+      style="cursor: pointer"
       color="primary"
       variant="tonal"
     >
@@ -44,12 +66,8 @@ const avatarBadgeProps = {
               </VListItemAction>
             </template>
 
-            <VListItemTitle class="font-weight-semibold">
-              John Doe
-            </VListItemTitle>
-            <VListItemSubtitle class="text-disabled">
-              Admin
-            </VListItemSubtitle>
+            <VListItemTitle class="font-weight-semibold"> {{ user?.first_name }} </VListItemTitle>
+            <VListItemSubtitle class="text-disabled"> {{ user?.last_name }} </VListItemSubtitle>
           </VListItem>
 
           <VDivider class="my-2" />
@@ -110,7 +128,7 @@ const avatarBadgeProps = {
           <VDivider class="my-2" />
 
           <!-- 👉 Logout -->
-          <VListItem to="/login">
+          <VListItem>
             <template #prepend>
               <VIcon
                 class="me-2"
@@ -119,7 +137,7 @@ const avatarBadgeProps = {
               />
             </template>
 
-            <VListItemTitle>Logout</VListItemTitle>
+            <VListItemTitle @click="onLogout">Logout</VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>

@@ -7,5 +7,5 @@ import DefaultLayoutWithVerticalNav from './components/DefaultLayoutWithVertical
 </template>
 
 <style lang="scss">
-@use "@layouts/styles/default-layout";
+@use '@layouts/styles/default-layout';
 </style>

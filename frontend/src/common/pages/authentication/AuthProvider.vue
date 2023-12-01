@@ -1,30 +1,23 @@
 <script setup>
 import { useTheme } from 'vuetify'
 
+const emit = defineEmits(['typeLoginSns'])
+
 const vuetifyTheme = useTheme()
 const authProviders = [
-  {
-    icon: 'mdi-facebook',
-    color: '#4267b2',
-    colorInDark: '#4267b2',
-  },
-  {
-    icon: 'mdi-twitter',
-    color: '#1da1f2',
-    colorInDark: '#1da1f2',
-  },
-  {
-    icon: 'mdi-github',
-    color: '#272727',
-    colorInDark: '#fff',
-  },
   {
     icon: 'mdi-google',
     color: '#db4437',
     colorInDark: '#db4437',
+    type: 'google',
   },
 ]
+
+const redirectSocial = type =>  {
+  emit('typeLoginSns', type)
+}
 </script>
+
 
 <template>
   <VBtn
@@ -33,5 +26,6 @@ const authProviders = [
     :icon="link.icon"
     variant="text"
     :color="vuetifyTheme.global.name.value === 'dark' ? link.colorInDark : link.color"
+    @click="redirectSocial(link.type)"
   />
 </template>
